@@ -21,7 +21,18 @@ class NumSearching {
 
     fun addElements(vararg elements: Int) {
         list.clear()
-        list.addAll(elements.take(num))
+
+        var counter = 0
+        for (element in elements) {
+            if (counter >= num) break
+            list.add(element)
+            ++counter
+        }
+        if (counter < num) {
+            for (i in 0 until num - counter) {
+                list.add(0)
+            }
+        }
     }
 
     fun searchElements() {

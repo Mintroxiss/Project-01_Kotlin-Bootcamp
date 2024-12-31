@@ -1,8 +1,11 @@
 package org.example
 
-class AverageOfNegative {
-    private var list: MutableList<Int> = mutableListOf()
+import java.util.Collections
+
+class Sorting {
+
     private var num = 0
+    private var list: MutableList<Double> = mutableListOf()
 
     fun setNum(num: Int): Boolean {
         if (num > 0) {
@@ -16,11 +19,7 @@ class AverageOfNegative {
         return false
     }
 
-    fun getNum(): Int {
-        return this.num
-    }
-
-    fun addElements(vararg elements: Int) {
+    fun addElements(vararg elements: Double) {
         list.clear()
 
         var counter = 0
@@ -31,31 +30,30 @@ class AverageOfNegative {
         }
         if (counter < num) {
             for (i in 0 until num - counter) {
-                list.add(0)
+                list.add(0.0)
             }
         }
+
     }
 
-    fun calcAverage(): Int? {
-        var res: Int = 0
+    fun sortList() {
+        var startIndex = 0
 
-        if (num > 0) {
-            var count = 0
-            for (el in list) {
-                if (el < 0) {
-                    res += el
-                    count++
+        while (startIndex < num) {
+            var minIndex: Int = startIndex
+            for (i in startIndex until num) {
+                if (list[minIndex] > list[i]) {
+                    minIndex = i
                 }
             }
 
-            if (count == 0) {
-                println("There are no negative elements")
-                return null
-            }
-
-            res /= count
+            Collections.swap(list, startIndex, minIndex)
+            ++startIndex
         }
+    }
 
-        return res
+    fun outList() {
+        for (el in list) print("$el ")
+        println()
     }
 }
