@@ -34,7 +34,7 @@ class Filtration {
     fun peekStrings(): MutableList<String> {
         val answer: MutableList<String> = mutableListOf()
         for (str in list) {
-            if (str.contains(substring)) {
+            if (substring in str) {
                 answer.add(str)
             }
         }
