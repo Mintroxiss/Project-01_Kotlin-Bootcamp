@@ -1,6 +1,6 @@
 package org.example
 
-class Сonsistency {
+class Consistency {
     private var num = 0
     private var arr : Array<Int?> = Array(1) { null }
 
